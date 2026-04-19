@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifelytics - Welcome</title>
+
+    <!-- Font Awesome for health icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Unique and highly professional fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+        body,
+        html {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /* Solid Dark Blue Background */
+            background: #0f172a;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .mouse-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+            animation: particleFade 1s ease-out forwards;
+        }
+
+        @keyframes particleFade {
+            0% { opacity: 0.8; transform: translate(-50%, -50%) scale(0.5); }
+            100% { opacity: 0; transform: translate(-50%, -200%) scale(1.2); }
+        }
+
+        /* Floating Health Icons Background */
+        .bg-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-icons i {
+            position: absolute;
+            animation: floatUp 20s linear infinite;
+            opacity: 0.2; /* Subtler opacity for dark mode */
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Vibrant Orbs for extra aesthetic */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            animation: floatOrb 10s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: #1e3a8a; /* Deep blue */
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #1d4ed8; /* Strong blue */
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: #2563eb; /* Bright blue */
+            top: 40%;
+            left: 50%;
+            animation-delay: -2s;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 50px) scale(1.2);
+            }
+        }
+
+        /* Main Container */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* The Login Card (Split Layout with Glassmorphism) */
+        .login-container {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            height: 600px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05); /* Very subtle white glass on dark BG */
+            backdrop-filter: blur(15px); /* Softer blur */
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        /* Form Side (Bright White Theme) */
+        .form-side {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95); /* Solid white card */
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Side Image Side */
+        .image-side {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: none;
+            background: #ffffff url('anatomy_avatar.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        @media (min-width: 768px) {
+            .image-side {
+                display: block;
+            }
+        }
+
+        /* Form Elements */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: #3b82f6;
+            background: #eff6ff;
+            padding: 12px;
+            border-radius: 14px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 38px; /* Increased from 32px */
+            font-weight: 800;
+            color: #1e293b; /* Dark text for white card */
+            letter-spacing: -1px;
+        }
+
+        .form-side h2 {
+            color: #1e293b; /* Dark text for white card */
+            font-size: 40px; /* Increased from 34px */
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .form-side p {
+            color: #64748b; /* Medium text for white card */
+            margin-top: 0;
+            margin-bottom: 40px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            color: #475569;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: #0f172a; /* Dark input text */
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-weight: 500;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 18px;
+            top: 40px;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 18px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(59, 130, 246, 0.3);
+            background: #2563eb;
+        }
+
+        #error {
+            color: #ef4444;
+            margin-top: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Vibrant Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Background Health Icons -->
+    <div class="bg-icons" id="bg-icons"></div>
+
+    <div class="page-wrapper">
+        <div class="login-container">
+
+            <!-- Glassy White Form Side -->
+            <div class="form-side">
+                <div class="logo">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h1>Lifelytics</h1>
+                </div>
+
+                <h2>Welcome back</h2>
+                <p>Enter your credentials to access the neural dashboard.</p>
+
+                <div class="input-group">
+                    <label>Admin ID</label>
+                    <input type="text" id="username" placeholder="Enter your ID" autocomplete="off">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="off">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <button class="btn-login" onclick="login()">Login Account</button>
+                <div id="error">Authentication Failed ❌</div>
+            </div>
+
+            <!-- Flat Vector Side Image -->
+            <div class="image-side"></div>
+
+        </div>
+    </div>
+
+    <script>
+        // Generate vibrant blue background icons
+        const iconContainer = document.getElementById('bg-icons');
+        const icons = ['fa-heart-pulse', 'fa-kit-medical', 'fa-staff-snake', 'fa-dumbbell', 'fa-apple-whole', 'fa-plus', 'fa-pills', 'fa-stethoscope', 'fa-dna'];
+        const colors = ['#1e3a8a', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
+
+        for (let i = 0; i < 35; i++) {
+            let icon = document.createElement('i');
+            icon.className = `fa-solid ${icons[Math.floor(Math.random() * icons.length)]}`;
+            icon.style.left = `${Math.random() * 100}vw`;
+            icon.style.animationDuration = `${15 + Math.random() * 20}s`;
+            icon.style.animationDelay = `${-Math.random() * 20}s`;
+            icon.style.fontSize = `${12 + Math.random() * 18}px`; // Substantially smaller
+            icon.style.color = colors[Math.floor(Math.random() * colors.length)];
+            // Random subtle rotation on the icons
+            icon.style.transform = `rotate(${Math.random() * 360}deg)`;
+            iconContainer.appendChild(icon);
+        }
+
+        // JS for cycling images removed since we use a static illustration
+
+        // Mouse Hover/Movement Emit Effect
+        document.addEventListener('mousemove', function(e) {
+            // Emit particles periodically
+            if (Math.random() > 0.15) return; 
+
+            let particle = document.createElement('i');
+            particle.className = `fa-solid ${icons[Math.floor(Math.random() * icons.length)]} mouse-particle`;
+            particle.style.left = e.pageX + 'px';
+            particle.style.top = e.pageY + 'px';
+            
+            // Random minimal size
+            particle.style.fontSize = Math.floor(8 + Math.random() * 8) + 'px'; // 8px to 16px
+            
+            // Random blue/white colors
+            let pColors = ['#ffffff', '#bfdbfe', '#60a5fa', '#3b82f6'];
+            particle.style.color = pColors[Math.floor(Math.random() * pColors.length)];
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        });
+
+        // Login Logic
+        function login() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let errorEl = document.getElementById("error");
+
+            if (username === "admin" && password === "1234") {
+                document.querySelector('.login-container').style.transform = 'scale(0.95)';
+                document.querySelector('.login-container').style.opacity = '0';
+                document.querySelector('.login-container').style.transition = 'all 0.5s ease';
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 500);
+            } else {
+                errorEl.style.opacity = '1';
+                setTimeout(() => { errorEl.style.opacity = '0'; }, 3000);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
